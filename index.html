@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>最佳损友认证系统</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 加载页 -->
+<div id="loader">
+  <div class="loader-text" id="loader-text">正在连接友情数据库...</div>
+</div>
+
+<!-- 密码页 -->
+<div id="lock-screen">
+  <div class="lock-inner">
+    <div class="tag">NFC 专用入口 · 仅限本人</div>
+    <h1>身份验证</h1>
+    <p class="sub">请输入我们高中时的班号，例如：<strong>07</strong></p>
+    <input
+      id="pw-input"
+      type="tel"
+      inputmode="numeric"
+      maxlength="4"
+      placeholder="输入班号"
+      autocomplete="off"
+    >
+    <button class="btn" onclick="checkPw()" style="width:100%;margin-top:14px;">验证</button>
+    <p id="pw-tip" class="small" style="margin-top:12px;min-height:20px;"></p>
+  </div>
+</div>
+
+<!-- 进度点 -->
+<div class="dots" id="dots"></div>
+
+<!-- 第 1 页：封面 -->
+<section class="page active" data-page="0">
+  <div class="inner">
+    <div class="tag">NFC 专用入口 · 仅限本人</div>
+    <h1>最佳损友<br>认证系统</h1>
+    <p class="sub">恭喜你，碰了一下。<br>系统检测到：你已进入我的人生缓存。</p>
+  </div>
+</section>
+
+<!-- 第 2 页：鉴定报告 -->
+<section class="page" data-page="1">
+  <div class="inner">
+    <h2>友情鉴定报告</h2>
+    <div class="card">
+      <div class="report-row"><span>鉴定对象</span><strong>【阙毅】</strong></div>
+      <div class="report-row"><span>身份</span><strong>高中同学 / 最佳损友</strong></div>
+      <div class="report-row"><span>友情等级</span><strong>SSR · 限量款</strong></div>
+      <div class="report-row"><span>危险程度</span><strong>嘴欠，但关键时刻靠得住</strong></div>
+      <div class="report-row"><span>欠饭次数</span><strong>∞（可分期）</strong></div>
+      <div class="report-row"><span>互怼胜率</span><strong>你 51% / 我 49%（我让你的）</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- 第 3 页：回忆 -->
+<section class="page" data-page="2">
+  <div class="inner">
+    <h2>高中回忆片段</h2>
+    <div class="card">
+      <div class="timeline-item">
+        <div class="time">高一 · 开学</div>
+        <h3>第一次坐你旁边</h3>
+        <p>我以为你是个正经人。后来发现，我错得很离谱。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="time">某天 · 上课</div>
+        <h3>你传纸条，我放哨</h3>
+        <p>最后纸条被老师收了，你说是我的字。兄弟就是用来背锅的。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="time">高三 · 晚自习</div>
+        <h3>一起熬过的夜</h3>
+        <p>题没做出来几道，废话倒是写了好几本。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="time">现在 · 碰卡这一刻</div>
+        <h3>系统重新连接</h3>
+        <p>不管多久没见，信号还在。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 第 4 页：友情数据 -->
+<section class="page" data-page="3">
+  <div class="inner">
+    <h2>友情数据</h2>
+    <p class="small">系统自动统计，不接受反驳。</p>
+    <div class="data-grid">
+      <div class="data-item"><div class="big-number" id="days">2576</div><div class="data-label">认识天数</div></div>
+      <div class="data-item"><div class="big-number">∞</div><div class="data-label">互怼次数</div></div>
+      <div class="data-item"><div class="big-number">N</div><div class="data-label">欠饭顿数</div></div>
+      <div class="data-item"><div class="big-number">1</div><div class="data-label">碰一下就能找到的人</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 第 5 页：随机语录 -->
+<section class="page" data-page="4">
+  <div class="inner">
+    <h2>随机说句人话</h2>
+    <div class="card">
+      <div class="quote-text" id="quote-text">点击下面按钮，系统随机生成一句。</div>
+    </div>
+    <button class="btn" onclick="randomQuote()" style="width:100%;">再来一句</button>
+  </div>
+</section>
+
+<!-- 第 6 页：照片 -->
+<section class="page" data-page="5">
+  <div class="inner">
+    <h2>照片缓存</h2>
+    <p class="small">建议放 4～6 张，加载更快。</p>
+    <div class="photo-grid">
+      <div class="photo"><img src="assets/photo1.jpg" alt=""></div>
+      <div class="photo"><img src="assets/photo2.jpg" alt=""></div>
+      <div class="photo"><img src="assets/photo3.jpg" alt=""></div>
+      <div class="photo"><img src="assets/photo4.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- 第 7 页：正经一点 -->
+<section class="page" data-page="6">
+  <div class="inner">
+    <h2>正经一点，就这一次</h2>
+    <div class="card letter">
+      <p>嗨，大儿。</p>
+      <p>这张卡不是银行卡，刷不出钱，但能刷出我。</p>
+      <p>高中那几年，说长不长，说短不短。现在想起来，很多事都模糊了，但有你掺和的那部分，还挺清楚。</p>
+      <p>我们都不是那种天天把“兄弟一辈子”挂嘴边的人，太肉麻。但有些话还是想放在这里：谢谢你在我还不太懂事的时候，没嫌我烦。</p>
+      <p>以后大家会忙，会散，会变成大人。但如果你哪天累了，或者只是无聊，碰一下这张卡，这个页面还在，我也还在。</p>
+      <p class="sign">——【许爹】</p>
+    </div>
+  </div>
+</section>
+
+<!-- 第 8 页：结尾 + 彩蛋 -->
+<section class="page" data-page="7">
+  <div class="inner">
+    <h2>最后一句</h2>
+    <p class="big">不管以后混得好不好，<br>碰一下，我还在。</p>
+    <button class="btn" onclick="toggleEgg()" style="width:100%;margin-top:10px;">点我，有彩蛋</button>
+    <div id="easter-egg" class="card hidden">
+      <p style="margin-bottom:6px;">其实认识你，是我高中里最不后悔的意外。</p>
+      <p class="small" style="margin:0;">—— 系统自动保存于友情数据库</p>
+    </div>
+  </div>
+</section>
+
+<!-- 底部导航 -->
+<div class="nav">
+  <button class="btn ghost" id="prevBtn" onclick="go(-1)">上一页</button>
+  <button class="btn" id="nextBtn" onclick="go(1)">下一页</button>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
